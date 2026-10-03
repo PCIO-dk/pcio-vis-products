@@ -1,0 +1,107 @@
+/* Public storefront for [pcio_me_shop] and the result/renew pages. */
+
+.pcio-me-shop { margin: 24px 0; }
+
+.mep-shop-bar { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+.mep-cart-btn {
+	appearance: none;
+	border: 1px solid #d1d5db;
+	background: #fff;
+	border-radius: 8px;
+	padding: 8px 16px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.mep-cart-btn:disabled { opacity: .6; cursor: default; }
+.mep-cart-btn:not(:disabled):hover { border-color: #1d4ed8; color: #1d4ed8; }
+
+.mep-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 20px;
+}
+.mep-card {
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	overflow: hidden;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+}
+.mep-card-img { aspect-ratio: 4 / 3; background: #f3f4f6; overflow: hidden; }
+.mep-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mep-card-img-empty { background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 10px, #eceef1 10px, #eceef1 20px); }
+.mep-card-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.mep-card-title { font-size: 16px; font-weight: 700; margin: 0; }
+.mep-card-price { font-size: 15px; color: #111827; font-weight: 600; }
+.mep-card-body .mep-btn { margin-top: auto; }
+
+.mep-loading, .mep-empty { color: #6b7280; padding: 16px; }
+.mep-error { color: #b91c1c; }
+
+/* Buttons */
+.mep-btn {
+	appearance: none;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	padding: 9px 16px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+}
+.mep-btn-primary { background: #1d4ed8; color: #fff; }
+.mep-btn-primary:hover { background: #1741b3; }
+.mep-btn-primary:disabled { opacity: .7; cursor: default; }
+.mep-btn-secondary { background: #fff; color: #1d4ed8; border-color: #c7d2fe; }
+.mep-btn-secondary:hover { background: #f5f7ff; }
+
+/* Modal */
+.mep-overlay { position: fixed; inset: 0; background: rgba(17,24,39,.5); display: flex; align-items: flex-start; justify-content: center; padding: 40px 16px; z-index: 100000; overflow: auto; }
+.mep-modal { width: 640px; max-width: 100%; background: #fff; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.3); }
+.mep-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1px solid #eef0f3; }
+.mep-modal-title { margin: 0; font-size: 20px; font-weight: 700; }
+.mep-modal-close { appearance: none; border: none; background: none; font-size: 26px; line-height: 1; cursor: pointer; color: #6b7280; }
+.mep-modal-body { padding: 22px; }
+.mep-modal-foot { padding: 0 22px 22px; display: flex; justify-content: flex-end; }
+
+.mep-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.mep-detail-img img { width: 100%; border-radius: 10px; display: block; }
+.mep-detail-price { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.mep-detail-desc { color: #374151; font-size: 14px; line-height: 1.6; }
+.mep-detail-buy { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+@media (max-width: 540px) { .mep-detail { grid-template-columns: 1fr; } }
+
+.mep-qty { width: 64px; padding: 6px 8px; border: 1px solid #d1d5db; border-radius: 6px; }
+.mep-qty-sm { width: 54px; }
+.mep-qty-label { font-size: 14px; font-weight: 600; }
+
+/* Cart */
+.mep-cart-list { display: flex; flex-direction: column; gap: 8px; }
+.mep-cart-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f1f3f5; }
+.mep-cart-name { font-weight: 600; }
+.mep-cart-line { font-variant-numeric: tabular-nums; }
+.mep-cart-remove { appearance: none; border: none; background: none; font-size: 20px; color: #b91c1c; cursor: pointer; line-height: 1; }
+.mep-cart-total { text-align: right; font-weight: 700; font-size: 16px; margin: 14px 0; }
+.mep-checkout-fields { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.mep-input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+
+/* Result + renew pages */
+.mep-result, .mep-renew {
+	max-width: 620px;
+	margin: 60px auto;
+	padding: 32px;
+	border: 1px solid #e5e7eb;
+	border-radius: 14px;
+	background: #fff;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.mep-result h1, .mep-renew h1 { margin-top: 0; font-size: 24px; }
+.mep-result.is-accepted h1 { color: #15803d; }
+.mep-result.is-rejected h1 { color: #b91c1c; }
+.mep-keys { list-style: none; padding: 0; margin: 18px 0; }
+.mep-keys li { padding: 8px 12px; background: #f8fafc; border: 1px solid #eef0f3; border-radius: 8px; margin-bottom: 8px; }
+.mep-keys code { font-size: 13px; }
+.mep-muted { color: #6b7280; font-size: 14px; }

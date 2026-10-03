@@ -1,0 +1,108 @@
+/* Shop management page (/vis/shop) — only the extras on top of the core Vis
+   list styles (members.css). The table, dark header, gray filter row, sort
+   icons, empty state, modal and form fields all come from members.css, scoped
+   to #pcio-me-app. */
+
+/* Tabs */
+.me-main > .mep-tabs {
+	display: flex;
+	gap: 4px;
+	border-bottom: 1px solid #e2e8f0;
+	margin: 0 0 20px;
+}
+.mep-tab {
+	appearance: none;
+	background: none;
+	border: none;
+	border-bottom: 2px solid transparent;
+	padding: 12px 20px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #64748b;
+	cursor: pointer;
+}
+.mep-tab:hover { color: #0f172a; }
+.mep-tab.is-active { color: #2563eb; border-bottom-color: #2563eb; }
+
+/* Toolbar: keep search + New button on the right */
+#pcio-me-app .me-toolbar-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-left: auto;
+}
+
+/* Cell helpers */
+#pcio-me-app .mep-thumb {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 6px;
+	display: block;
+}
+#pcio-me-app .mep-code {
+	font-size: 12px;
+	background: #f1f5f9;
+	padding: 2px 6px;
+	border-radius: 4px;
+}
+#pcio-me-app .mep-muted { color: #94a3b8; }
+#pcio-me-app .mep-link { color: #2563eb; text-decoration: none; }
+#pcio-me-app .mep-link:hover { text-decoration: underline; }
+
+/* Modal extras */
+.me-overlay .me-form-hint {
+	display: block;
+	font-size: 12px;
+	color: #64748b;
+	margin-top: 4px;
+
+/* Licence key: keep it narrow (unreadable in full anyway) — truncate with an
+   ellipsis and copy the full value to the clipboard on click. */
+#pcio-me-app .mep-copy {
+	display: inline-block;
+	max-width: 96px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+}
+#pcio-me-app .mep-copy:hover { background: #e2e8f0; }
+#pcio-me-app .mep-copied {
+	background: #dcfce7 !important;
+	color: #166534;
+}
+}
+.me-overlay .me-media-picker {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.me-overlay .mep-img-preview {
+	width: 56px;
+	height: 56px;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background: #f8fafc;
+}
+.me-overlay .mep-img-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+.me-overlay .mep-checks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+}
+.me-overlay .mep-check {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #334155;
+}

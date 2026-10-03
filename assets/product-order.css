@@ -1,0 +1,94 @@
+/* ================================================================
+   PCIO VIS Products — product-order.css
+   [pcio_me_product_order] shortcode styles.
+   ================================================================ */
+
+.pcio-mep-product-order { max-width: 640px; margin: 0 auto; font-family: inherit; }
+
+/* ── Card ──────────────────────────────────────────────────────── */
+.mep-po-card {
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #fff;
+}
+.mep-po-img {
+	width: 100%;
+	max-height: 280px;
+	object-fit: cover;
+	display: block;
+}
+.mep-po-body { padding: 1.5rem; }
+.mep-po-title {
+	margin: 0 0 .75rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: #1e293b;
+}
+.mep-po-desc { color: #475569; margin-bottom: 1rem; line-height: 1.6; }
+.mep-po-price {
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #0f172a;
+	margin-bottom: 1.25rem;
+}
+
+/* ── Delivery method picker ────────────────────────────────────── */
+.mep-po-methods {
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: .75rem 1rem;
+	margin-bottom: 1.25rem;
+}
+.mep-po-methods-legend {
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #64748b;
+	padding: 0 .25rem;
+}
+.mep-po-method-label {
+	display: flex;
+	align-items: flex-start;
+	gap: .6rem;
+	padding: .5rem 0;
+	cursor: pointer;
+	border-bottom: 1px solid #f1f5f9;
+}
+.mep-po-method-label:last-child { border-bottom: none; }
+.mep-po-method-label input { margin-top: 3px; flex-shrink: 0; }
+.mep-po-method-name { font-weight: 600; color: #1e293b; }
+.mep-po-method-desc { display: block; font-size: .85rem; color: #64748b; }
+
+/* ── Order form ────────────────────────────────────────────────── */
+.mep-po-form   { margin-top: 1rem; }
+.mep-po-row    { margin-bottom: .75rem; }
+.mep-po-label  { display: block; font-size: .875rem; font-weight: 600; color: #374151; margin-bottom: .3rem; }
+.mep-po-label .req { color: #ef4444; }
+.mep-po-input {
+	width: 100%;
+	padding: .5rem .75rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 6px;
+	font-size: 1rem;
+	color: #1e293b;
+	box-sizing: border-box;
+	transition: border-color .15s;
+}
+.mep-po-input:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+.mep-po-error { color: #dc2626; font-size: .9rem; margin: .4rem 0 .75rem; }
+.mep-po-submit {
+	display: inline-block;
+	padding: .6rem 1.6rem;
+	background: #3b82f6;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	font-size: 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background .15s;
+}
+.mep-po-submit:hover   { background: #2563eb; }
+.mep-po-submit:disabled { opacity: .6; cursor: default; }

@@ -1,0 +1,867 @@
+# Copyright (C) 2026 PCIO
+# This file is distributed under the GPL2 license.
+# Translators:
+# PCIO <info@pcio.dk>, 2026
+msgid ""
+msgstr ""
+"Project-Id-Version: PCIO VIS Products 1.0.0\n"
+"Report-Msgid-Bugs-To: https://www.pcio.dk/\n"
+"POT-Creation-Date: 2026-08-01 16:38+0200\n"
+"PO-Revision-Date: 2026-10-02 18:32+0200\n"
+"Last-Translator: PCIO <info@pcio.dk>\n"
+"Language-Team: Danish <info@pcio.dk>\n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: pcio-vis-products\n"
+"X-Generator: Poedit 3.9\n"
+
+#: includes/class-pcio-vis-products-frontend.php:81
+msgid "%d item"
+msgstr "%d vare"
+
+#: includes/class-pcio-vis-products-frontend.php:82
+msgid "%d items"
+msgstr "%d varer"
+
+#: includes/class-pcio-vis-products-admin.php:69
+msgid "+ New product"
+msgstr "+ Nyt produkt"
+
+#. translators: translators: %s: site name
+#: includes/class-pcio-vis-products-fulfillment.php:318
+msgid "A membership has been created for you at %s."
+msgstr "Et medlemskab er oprettet til dig på %s."
+
+#: includes/class-pcio-vis-products-admin.php:97
+msgid "A unique internal identifier (must be unique)."
+msgstr "Et unikt internt ID (skal være unikt)."
+
+#: includes/class-pcio-vis-products-admin.php:38
+msgid "Access denied"
+msgstr "Adgang nægtet"
+
+#: includes/class-pcio-vis-products-admin.php:81
+msgid "Active"
+msgstr "Aktiv"
+
+#: includes/class-pcio-vis-products-fulfillment.php:245
+msgid "Active until %s"
+msgstr "Aktiv til %s"
+
+#: includes/class-pcio-vis-products-frontend.php:65
+msgid "Add to cart"
+msgstr "Læg i kurv"
+
+#: includes/class-pcio-vis-products-admin.php:101
+msgid "All groups"
+msgstr "Alle grupper"
+
+#: templates/result.php:58
+msgid "Almost there…"
+msgstr "Næsten der…"
+
+#: includes/class-pcio-vis-products-integration.php:223
+msgid "Amount"
+msgstr "Beløb"
+
+#: includes/class-pcio-vis-products-admin.php:96
+msgid "Amount in major units (e.g. 49.00). 0 = free."
+msgstr "Beløb i hele enheder (f.eks. 49,00). 0 = gratis."
+
+#: templates/renew.php:54 templates/result.php:66
+msgid "Back to the website"
+msgstr "Tilbage til hjemmesiden"
+
+#: includes/class-pcio-vis-products-integration.php:220
+msgid "Buyer"
+msgstr "Køber"
+
+#: includes/class-pcio-vis-products-admin.php:83
+msgid "Cancel"
+msgstr "Annuller"
+
+#: includes/class-pcio-vis-products-rest.php:309
+msgid "Cancelled"
+msgstr "Annulleret"
+
+#: includes/class-pcio-vis-products-frontend.php:67
+msgid "Cart"
+msgstr "Kurv"
+
+#: includes/class-pcio-vis-products-frontend.php:68
+msgid "Checkout"
+msgstr "Betal"
+
+#: includes/class-pcio-vis-products-admin.php:77
+msgid "Choose image"
+msgstr "Vælg billede"
+
+#: includes/class-pcio-vis-products-frontend.php:66
+msgid "Close"
+msgstr "Luk"
+
+#: includes/class-pcio-vis-products-rest.php:306
+msgid "Confirmed (free)"
+msgstr "Bekræftet (gratis)"
+
+#: includes/class-pcio-vis-products-rest.php:417
+msgid "Could not create the order. Please try again."
+msgstr "Ordren kunne ikke oprettes. Prøv igen."
+
+#: includes/class-pcio-vis-products-rest.php:175
+msgid "Could not create the product. The product name must be unique and non-empty."
+msgstr "Produktet kunne ikke oprettes. Produktnavnet skal være unikt og ikke tomt."
+
+#: includes/class-pcio-vis-products-rest.php:511
+msgid "Could not create the renewal order."
+msgstr "Fornyelsesordren kunne ikke oprettes."
+
+#: includes/class-pcio-vis-products-rest.php:190
+msgid "Could not update the product. The product name must be unique."
+msgstr "Produktet kunne ikke opdateres. Produktnavnet skal være unikt."
+
+#: includes/class-pcio-vis-products-admin.php:90
+msgid "Customer"
+msgstr "Kunde"
+
+#: includes/class-pcio-vis-products-integration.php:218
+msgid "Date"
+msgstr "Dato"
+
+#: includes/class-pcio-vis-products-admin.php:85
+msgid "Delete"
+msgstr "Slet"
+
+#: includes/class-pcio-vis-products-admin.php:86
+msgid "Delete this item?"
+msgstr "Slet dette element?"
+
+#: includes/class-pcio-vis-products-admin.php:74
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: includes/class-pcio-vis-products-admin.php:84
+msgid "Edit"
+msgstr "Rediger"
+
+#: includes/class-pcio-vis-products-admin.php:87
+msgid "Edit product"
+msgstr "Rediger produkt"
+
+#: includes/class-pcio-vis-products-admin.php:91
+#: includes/class-pcio-vis-products-integration.php:221
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/class-pcio-vis-products-fulfillment.php:282
+msgid "Enter the licence key in your purchased plugin to activate it:"
+msgstr "Indtast licensnøglen i dit købte plugin for at aktivere det:"
+
+#: templates/result.php:54
+msgid "Enter your licence key in the product to activate it."
+msgstr "Indtast din licensnøgle i produktet for at aktivere det."
+
+#: includes/class-pcio-vis-products-cron.php:131
+#: includes/class-pcio-vis-products-fulfillment.php:246
+msgid "Expired"
+msgstr "Udløbet"
+
+#: includes/class-pcio-vis-products-admin.php:92
+msgid "Expires"
+msgstr "Udløber"
+
+#: includes/class-pcio-vis-products-admin.php:102
+msgid "Filter"
+msgstr "Filtrer"
+
+#: includes/class-pcio-vis-products-frontend.php:73
+msgid "Free"
+msgstr "Gratis"
+
+#: includes/class-pcio-vis-products-admin.php:71
+msgid "Group"
+msgstr "Gruppe"
+
+#. translators: translators: %s: customer name
+#. translators: translators: %s: member name
+#: includes/class-pcio-vis-products-cron.php:99
+#: includes/class-pcio-vis-products-cron.php:150
+#: includes/class-pcio-vis-products-fulfillment.php:306
+msgid "Hi %s,"
+msgstr "Hej %s,"
+
+#: includes/class-pcio-vis-products-fulfillment.php:307
+msgid "Hi,"
+msgstr "Hej,"
+
+#: includes/class-pcio-vis-products-admin.php:76
+msgid "Image"
+msgstr "Billede"
+
+#: includes/class-pcio-vis-products-integration.php:222
+msgid "Items"
+msgstr "Varer"
+
+#: includes/class-pcio-vis-products-admin.php:89
+msgid "Licence key"
+msgstr "Licensnøgle"
+
+#: templates/admin.php:48
+msgid "Loading&hellip;"
+msgstr "Indlæser&hellip;"
+
+#: includes/class-pcio-vis-products-integration.php:111
+msgid "Manage products, subscriptions and online sales."
+msgstr "Administrer produkter, abonnementer og onlinesalg."
+
+#: includes/class-pcio-vis-products-integration.php:56
+msgid "Manage shop products & subscriptions"
+msgstr "Administrer shop-produkter og abonnementer"
+
+#: pcio-vis-products.php:173
+msgid "Member Event – Products requires the Member Event plugin to be installed and active. Shop functionality is disabled until then."
+msgstr "Member Event – Produkter kræver, at Member Event-pluginnet er installeret og aktivt. Shop-funktionen er deaktiveret, indtil det er tilfældet."
+
+#: includes/class-pcio-vis-products-admin.php:80
+msgid "Membership"
+msgstr "Medlemskab"
+
+#: includes/class-pcio-vis-products-admin.php:88
+msgid "New product"
+msgstr "Nyt produkt"
+
+#: includes/class-pcio-vis-products-admin.php:95
+msgid "No"
+msgstr "Nej"
+
+#: includes/class-pcio-vis-products-admin.php:105
+msgid "No matches."
+msgstr "Ingen resultater."
+
+#: includes/class-pcio-vis-products-rest.php:276
+msgid "No payment to refund."
+msgstr "Ingen betaling at refundere."
+
+#: includes/class-pcio-vis-products-frontend.php:79
+msgid "No products available."
+msgstr "Ingen produkter tilgængelige."
+
+#: includes/class-pcio-vis-products-admin.php:98
+msgid "No products yet."
+msgstr "Ingen produkter endnu."
+
+#: includes/class-pcio-vis-products-admin.php:99
+msgid "No subscriptions yet."
+msgstr "Ingen abonnementer endnu."
+
+#: includes/class-pcio-vis-products-rest.php:392
+msgid "One of the selected products is not available."
+msgstr "Et af de valgte produkter er ikke tilgængeligt."
+
+#: includes/class-pcio-vis-products-rest.php:445
+#: includes/class-pcio-vis-products-rest.php:492
+msgid "Online payment is not available right now. Please contact us."
+msgstr "Online betaling er ikke tilgængelig lige nu. Kontakt venligst os."
+
+#: includes/class-pcio-vis-products-integration.php:219
+msgid "Order"
+msgstr "Ordre"
+
+#: includes/class-pcio-vis-products-rest.php:269
+msgid "Order not found."
+msgstr "Ordren blev ikke fundet."
+
+#. translators: translators: %s: order number
+#: includes/class-pcio-vis-products-fulfillment.php:274
+msgid "Order number: %s"
+msgstr "Ordrenummer: %s"
+
+#: includes/class-pcio-vis-products-integration.php:204
+msgid "Order refunded."
+msgstr "Ordre refunderet."
+
+#: includes/class-pcio-vis-products-rest.php:305
+msgid "Paid"
+msgstr "Betalt"
+
+#: includes/class-pcio-vis-products-rest.php:308
+msgid "Partly refunded"
+msgstr "Delvist refunderet"
+
+#: templates/result.php:62
+msgid "Payment cancelled"
+msgstr "Betaling annulleret"
+
+#: includes/class-pcio-vis-products-rest.php:304
+msgid "Pending"
+msgstr "Afventer"
+
+#: includes/class-pcio-vis-products-frontend.php:77
+msgid "Please enter a valid email address."
+msgstr "Angiv en gyldig e-mailadresse."
+
+#: includes/class-pcio-vis-products-frontend.php:76
+msgid "Please enter your name."
+msgstr "Angiv dit navn."
+
+#: includes/class-pcio-vis-products-rest.php:375
+msgid "Please provide your name and a valid email address."
+msgstr "Angiv dit navn og en gyldig e-mailadresse."
+
+#: includes/class-pcio-vis-products-admin.php:75
+msgid "Price"
+msgstr "Pris"
+
+#: includes/class-pcio-vis-products-frontend.php:78
+#: includes/class-pcio-vis-products-frontend.php:165
+msgid "Processing…"
+msgstr "Behandler…"
+
+#: includes/class-pcio-vis-products-stripe.php:42
+msgid "Product"
+msgstr "Produkt"
+
+#: includes/class-pcio-vis-products-admin.php:72
+msgid "Product name"
+msgstr "Produktnavn"
+
+#: includes/class-pcio-vis-products-rest.php:186
+#: includes/class-pcio-vis-products-rest.php:338
+msgid "Product not found."
+msgstr "Produktet blev ikke fundet."
+
+#: includes/class-pcio-vis-products-admin.php:67 templates/admin.php:38
+msgid "Products"
+msgstr "Produkter"
+
+#: includes/class-pcio-vis-products-frontend.php:69
+msgid "Qty"
+msgstr "Antal"
+
+#: includes/class-pcio-vis-products-integration.php:188
+#: includes/class-pcio-vis-products-integration.php:202
+msgid "Refund"
+msgstr "Refunder"
+
+#: includes/class-pcio-vis-products-integration.php:200
+msgid "Refund amount"
+msgstr "Refunderingsbeløb"
+
+#: includes/class-pcio-vis-products-integration.php:205
+msgid "Refund failed."
+msgstr "Refundering mislykkedes."
+
+#: includes/class-pcio-vis-products-integration.php:199
+msgid "Refund order"
+msgstr "Refunder ordre"
+
+#: includes/class-pcio-vis-products-integration.php:57
+msgid "Refund shop orders"
+msgstr "Refunder Shop-ordrer"
+
+#: includes/class-pcio-vis-products-rest.php:307
+msgid "Refunded"
+msgstr "Refunderet"
+
+#: includes/class-pcio-vis-products-frontend.php:70
+msgid "Remove"
+msgstr "Fjern"
+
+#: includes/class-pcio-vis-products-admin.php:78
+msgid "Remove image"
+msgstr "Fjern billede"
+
+#: templates/renew.php:47
+msgid "Renew now"
+msgstr "Forny nu"
+
+#. translators: translators: %s: price
+#: templates/renew.php:40
+msgid "Renew now for %s to extend it by one year."
+msgstr "Forny nu for %s og forlæng med ét år."
+
+#. translators: translators: %s: renewal link
+#: includes/class-pcio-vis-products-cron.php:110
+msgid "Renew now to keep it active for another year: %s"
+msgstr "Forny nu for at holde det aktivt et år mere: %s"
+
+#: includes/class-pcio-vis-products-cron.php:111
+msgid "Renew subscription"
+msgstr "Forny abonnement"
+
+#: templates/renew.php:22
+msgid "Renew your subscription"
+msgstr "Forny dit abonnement"
+
+#. translators: translators: %s: product name
+#: includes/class-pcio-vis-products-rest.php:504
+msgid "Renewal: %s"
+msgstr "Fornyelse: %s"
+
+#: includes/class-pcio-vis-products-admin.php:82
+msgid "Save"
+msgstr "Gem"
+
+#: includes/class-pcio-vis-products-admin.php:100
+msgid "Save failed."
+msgstr "Gem mislykkedes."
+
+#: includes/class-pcio-vis-products-admin.php:70
+msgid "Search…"
+msgstr "Søg…"
+
+#: includes/class-pcio-vis-products-frontend.php:64
+msgid "See details"
+msgstr "Se detaljer"
+
+#: includes/class-pcio-vis-products-cron.php:42
+msgid "Sends renewal reminders and removes expired subscriptions."
+msgstr "Sender fornyelsespåmindelser og fjerner udløbne abonnementer."
+
+#: includes/class-pcio-vis-products-integration.php:108
+#: includes/class-pcio-vis-products-integration.php:131 templates/admin.php:20
+msgid "Shop"
+msgstr "Shop"
+
+#: includes/class-pcio-vis-products-integration.php:212
+msgid "Shop Orders"
+msgstr "Shop-ordrer"
+
+#: includes/class-pcio-vis-products-cron.php:41
+msgid "Shop subscriptions"
+msgstr "Shop-abonnementer"
+
+#: includes/class-pcio-vis-products-admin.php:103
+msgid "Showing"
+msgstr "Viser"
+
+#: includes/class-pcio-vis-products-frontend.php:80
+#: includes/class-pcio-vis-products-frontend.php:166
+msgid "Something went wrong. Please try again."
+msgstr "Noget gik galt. Prøv igen."
+
+#: includes/class-pcio-vis-products-admin.php:93
+#: includes/class-pcio-vis-products-integration.php:224
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-pcio-vis-products-integration.php:225
+msgid "Stripe"
+msgstr "Stripe"
+
+#. translators: translators: %d: HTTP status code
+#: includes/class-pcio-vis-products-stripe.php:142
+msgid "Stripe error (HTTP %d)."
+msgstr "Stripe-fejl (HTTP %d)."
+
+#: includes/class-pcio-vis-products-stripe.php:99
+#: includes/class-pcio-vis-products-stripe.php:118
+msgid "Stripe is not configured."
+msgstr "Stripe er ikke konfigureret."
+
+#: includes/class-pcio-vis-products-admin.php:79
+#: includes/class-pcio-vis-products-integration.php:145
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: includes/class-pcio-vis-products-rest.php:485
+msgid "Subscription not found."
+msgstr "Abonnementet blev ikke fundet."
+
+#. translators: translators: %s: product name
+#: includes/class-pcio-vis-products-fulfillment.php:159
+msgid "Subscription renewed: %s"
+msgstr "Abonnement fornyet: %s"
+
+#: includes/class-pcio-vis-products-admin.php:68 templates/admin.php:41
+msgid "Subscriptions"
+msgstr "Abonnementer"
+
+#: includes/class-pcio-vis-products-fulfillment.php:163
+msgid "Thank you for renewing your subscription."
+msgstr "Tak for fornyelsen af dit abonnement."
+
+#. translators: translators: %s: product name
+#: includes/class-pcio-vis-products-cron.php:155
+msgid "Thank you for the time with %s. Your subscription has now ended."
+msgstr "Tak for tiden med %s. Dit abonnement er nu ophørt."
+
+#: includes/class-pcio-vis-products-fulfillment.php:271 templates/result.php:24
+msgid "Thank you for your purchase!"
+msgstr "Tak for dit køb!"
+
+#: includes/class-pcio-vis-products-rest.php:272
+msgid "This order cannot be refunded."
+msgstr "Denne ordre kan ikke refunderes."
+
+#: includes/class-pcio-vis-products-rest.php:489 templates/renew.php:51
+msgid "This subscription can no longer be renewed online. Please contact us."
+msgstr "Dette abonnement kan ikke længere fornyes online. Kontakt venligst os."
+
+#: includes/class-pcio-vis-products-admin.php:73
+msgid "Title"
+msgstr "Titel"
+
+#: includes/class-pcio-vis-products-frontend.php:72
+msgid "Total"
+msgstr "Total"
+
+#: includes/class-pcio-vis-products-integration.php:201
+msgid "Up to the order total can be refunded. The maximum performs a full refund."
+msgstr "Op til ordretotalen kan refunderes. Maks. udfører en fuld refundering."
+
+#. translators: translators: %s: expiry date
+#: includes/class-pcio-vis-products-fulfillment.php:288 templates/result.php:46
+msgid "Valid until %s"
+msgstr "Gyldig til %s"
+
+#: includes/class-pcio-vis-products-integration.php:225
+msgid "View"
+msgstr "Vis"
+
+#: templates/result.php:59
+msgid "We are still confirming your payment. Please refresh this page in a moment, or check your email."
+msgstr "Vi er stadig ved at bekræfte din betaling. Opdater siden om lidt, eller tjek din e-mail."
+
+#. translators: translators: %s: site name
+#: includes/class-pcio-vis-products-fulfillment.php:311
+msgid "Welcome to %s"
+msgstr "Velkommen til %s"
+
+#: includes/class-pcio-vis-products-integration.php:203
+msgid "Working…"
+msgstr "Arbejder…"
+
+#: includes/class-pcio-vis-products-admin.php:94
+msgid "Yes"
+msgstr "Ja"
+
+#. translators: translators: %s: website link
+#: includes/class-pcio-vis-products-cron.php:160
+msgid "You are welcome to subscribe again any time here: %s"
+msgstr "Du er altid velkommen til at abonnere igen her: %s"
+
+#. translators: translators: %s: login link
+#: includes/class-pcio-vis-products-fulfillment.php:328
+msgid "You can log in here: %s"
+msgstr "Du kan logge ind her: %s"
+
+#: includes/class-pcio-vis-products-admin.php:37
+msgid "You do not have permission to access this page."
+msgstr "Du har ikke tilladelse til at se denne side."
+
+#. translators: translators: %s: product name
+#: includes/class-pcio-vis-products-cron.php:144
+msgid "Your %s subscription has ended"
+msgstr "Dit %s-abonnement er ophørt"
+
+#. translators: translators: %s: product name
+#: includes/class-pcio-vis-products-cron.php:93
+msgid "Your %s subscription is about to expire"
+msgstr "Dit %s-abonnement er ved at udløbe"
+
+#: includes/class-pcio-vis-products-frontend.php:71
+#: includes/class-pcio-vis-products-rest.php:402
+msgid "Your cart is empty."
+msgstr "Din kurv er tom."
+
+#: includes/class-pcio-vis-products-frontend.php:75
+msgid "Your email"
+msgstr "Din e-mail"
+
+#: includes/class-pcio-vis-products-fulfillment.php:170
+msgid "Your licence key is unchanged:"
+msgstr "Din licensnøgle er uændret:"
+
+#: includes/class-pcio-vis-products-fulfillment.php:281 templates/result.php:36
+msgid "Your licence keys"
+msgstr "Dine licensnøgler"
+
+#. translators: translators: %s: member number
+#: includes/class-pcio-vis-products-fulfillment.php:323
+msgid "Your member number is %s."
+msgstr "Dit medlemsnummer er %s."
+
+#: includes/class-pcio-vis-products-frontend.php:74
+msgid "Your name"
+msgstr "Dit navn"
+
+#. translators: translators: %s: order number
+#: includes/class-pcio-vis-products-fulfillment.php:266
+msgid "Your order %s"
+msgstr "Din ordre %s"
+
+#. translators: translators: %s: order number
+#: templates/result.php:29
+msgid "Your order %s has been confirmed. A confirmation email is on its way."
+msgstr "Din ordre %s er bekræftet. En bekræftelsesmail er på vej."
+
+#: templates/result.php:63
+msgid "Your order was not completed and you have not been charged."
+msgstr "Din ordre blev ikke gennemført, og du er ikke blevet opkrævet."
+
+#: includes/class-pcio-vis-products-rest.php:369
+#: includes/class-pcio-vis-products-rest.php:479
+msgid "Your session expired. Please reload the page and try again."
+msgstr "Din session er udløbet. Genindlæs siden og prøv igen."
+
+#. translators: translators: 1: product name, 2: expiry date
+#: includes/class-pcio-vis-products-cron.php:104 templates/renew.php:28
+msgid "Your subscription to %1$s expires on %2$s."
+msgstr "Dit abonnement på %1$s udløber den %2$s."
+
+#. translators: translators: 1: product name, 2: new expiry date
+#: includes/class-pcio-vis-products-fulfillment.php:166
+msgid "Your subscription to %1$s is now valid until %2$s."
+msgstr "Dit abonnement på %1$s er nu gyldigt til %2$s."
+
+#: includes/class-pcio-vis-products-admin.php:104
+msgid "of"
+msgstr "af"
+
+#. translators: %s: new expiry date
+msgid "New expiry date: %s"
+msgstr "Ny udløbsdato: %s"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "A new delivery order has been placed on {site_name}."
+msgstr "En ny leveringsordre er afgivet på {site_name}."
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Customer details block"
+msgstr "Kundeoplysninger (blok)"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Items list (HTML ul)"
+msgstr "Vareliste (HTML ul)"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Items summary"
+msgstr "Varesammenfatning"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Licence keys block (empty if none)"
+msgstr "Licensnøgler-blok (tom hvis ingen)"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+#, php-format
+msgid "New delivery order: {order_no}"
+msgstr "Ny leveringsordre: {order_no}"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Order number: <strong>{order_no}</strong>"
+msgstr "Ordrenummer: <strong>{order_no}</strong>"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Your order {order_no}"
+msgstr "Din ordre {order_no}"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+#, php-format
+msgid "A new delivery order has been placed on %s."
+msgstr "En ny leveringsordre er afgivet på %s."
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Additional charge on top of the product price (0 = included)."
+msgstr "Ekstra gebyr oven på produktprisen (0 = inkluderet)."
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Address"
+msgstr "Adresse"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "All methods"
+msgstr "Alle metoder"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "All statuses"
+msgstr "Alle statusser"
+
+#: includes/class-pcio-vis-products-delivery-rest.php
+msgid "Could not create delivery method."
+msgstr "Leveringsmetoden kunne ikke oprettes."
+
+#: includes/class-pcio-vis-products-delivery-rest.php
+msgid "Could not update delivery status."
+msgstr "Leveringsstatus kunne ikke opdateres."
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Delivered"
+msgstr "Leveret"
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Deliveries"
+msgstr "Leveringer"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+#: includes/class-pcio-vis-products-delivery-rest.php
+#: includes/class-pcio-vis-products-frontend.php
+msgid "Delivery method"
+msgstr "Leveringsmetode"
+
+#: includes/class-pcio-vis-products-delivery-rest.php
+msgid "Delivery method not found."
+msgstr "Leveringsmetoden blev ikke fundet."
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Delivery Methods"
+msgstr "Leveringsmetoder"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Delivery Orders"
+msgstr "Leveringsordrer"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Delete this delivery method?"
+msgstr "Slet denne leveringsmetode?"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "e.g. By mail"
+msgstr "f.eks. Pr. post"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Edit delivery method"
+msgstr "Rediger leveringsmetode"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Extra price"
+msgstr "Ekstragebyr"
+
+#: includes/class-pcio-vis-products-delivery-rest.php
+msgid "Invalid delivery status."
+msgstr "Ugyldig leveringsstatus."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Manage deliveries"
+msgstr "Administrer leveringer"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Mark delivered"
+msgstr "Marker som leveret"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Mark pending"
+msgstr "Marker som afventer"
+
+#: includes/class-pcio-vis-products-delivery-rest.php
+msgid "Method name is required."
+msgstr "Metodenavnet er påkrævet."
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Name"
+msgstr "Navn"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "New delivery method"
+msgstr "Ny leveringsmetode"
+
+#. translators: %s: order number
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "New delivery order: %s"
+msgstr "Ny leveringsordre: %s"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "+ New method"
+msgstr "+ Ny metode"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "No delivery methods yet."
+msgstr "Ingen leveringsmetoder endnu."
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "No delivery orders yet."
+msgstr "Ingen leveringsordrer endnu."
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Order number"
+msgstr "Ordrenummer"
+
+#: includes/class-pcio-vis-products-fulfillment.php
+msgid "Phone"
+msgstr "Telefon"
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "Place order"
+msgstr "Afgiv ordre"
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "Please select a delivery method."
+msgstr "Vælg venligst en leveringsmetode."
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "Quantity"
+msgstr "Antal"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Short description shown to members"
+msgstr "Kort beskrivelse vist for medlemmer"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Sort"
+msgstr "Sortering"
+
+#: includes/class-pcio-vis-products-delivery-admin.php
+msgid "Sort order"
+msgstr "Sorteringsrækkefølge"
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "This product is not available."
+msgstr "Dette produkt er ikke tilgængeligt."
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "This product is not currently available."
+msgstr "Dette produkt er ikke tilgængeligt i øjeblikket."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Track and confirm product deliveries to members."
+msgstr "Spor og bekræft produktleveringer til medlemmer."
+
+#: includes/class-pcio-vis-products-frontend.php
+msgid "You must be logged in as a Vis member to order this product."
+msgstr "Du skal være logget ind som Vis-medlem for at bestille dette produkt."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "[pcio_me_member_subscription_count]"
+msgstr "[pcio_me_member_subscription_count]"
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Animated count of members with an active membership subscription. Provided by PCIO VIS Products."
+msgstr "Animeret tæller for medlemmer med aktivt medlemsabonnement. Leveret af PCIO VIS Products."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Public product storefront with Stripe checkout."
+msgstr "Offentlig produktbutik med Stripe-betaling."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Single-product order form with quantity picker and delivery selection."
+msgstr "Enkelprodukt-bestillingsformular med antalvælger og leveringsvalg."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Animated count of members with an active membership subscription."
+msgstr "Animeret tæller for medlemmer med aktivt medlemsabonnement."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "PCIO VIS Products"
+msgstr "PCIO VIS Products"
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Renders the public product storefront. Visitors browse products, add items to their cart, and check out via Stripe (or instantly for free products). Provided by the PCIO VIS Products plugin."
+msgstr "Viser den offentlige produktbutik. Besøgende gennemser produkter, lægger varer i kurven og betaler via Stripe (eller straks for gratis produkter). Leveret af PCIO VIS Products-pluginnet."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Limit the storefront to one product group. Leave empty to show all active products."
+msgstr "Begræns butikken til én produktgruppe. Lad være tom for at vise alle aktive produkter."
+
+#: includes/class-pcio-vis-products-integration.php
+msgid "Displays the number of members with a currently active (non-expired) membership subscription as an animated count-up number. Only subscriptions linked to a member record are counted — standalone licence-key products are excluded. Works in any page builder text or code module (e.g. Divi Text Module). Provided by the PCIO VIS Products plugin."
+msgstr "Viser antallet af medlemmer med et aktivt (ikke-udl\\u00f8bet) medlemsabonnement som et animeret tal. Kun abonnementer tilknyttet et medlemspost t\\u00e6lles — rene licens-n\\u00f8gle-produkter er udelukket. Kan bruges i ethvert page builder-tekst- eller kode-modul (f.eks. Divi Tekst-modul). Leveret af PCIO VIS Products-pluginnet."
+
+msgid "Name of the membership subscription product"
+msgstr "Navn på medlemskabsabonnementsproduktet"
+
+msgid "Subscription expiry date (YYYY-MM-DD)"
+msgstr "Abonnementets udløbsdato (ÅÅÅÅ-MM-DD)"
