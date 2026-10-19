@@ -278,13 +278,13 @@ class PCIO_VIS_Products_Admin {
 
     private function enqueue_assets(): void {
         // Reuse the core Vis stylesheet for shared layout/table/modal styles.
-        wp_enqueue_style( 'pcio-me-app', plugins_url( 'assets/members.css', PCIO_VIS_PLUGIN_FILE ), [], '1.0.6' );
+        wp_enqueue_style( 'pcio-me-app', plugins_url( 'assets/members.css', PCIO_VIS_PLUGIN_FILE ), [], '1.4.0' );
         wp_enqueue_style( 'pcio-mep-admin', plugins_url( 'assets/shop-admin.css', PCIO_VIS_PRODUCTS_FILE ), [ 'pcio-me-app' ], PCIO_VIS_PRODUCTS_VERSION );
 
         // Image picker uses the WP media modal.
         wp_enqueue_media();
 
-        wp_enqueue_script( 'pcio-mep-admin', plugins_url( 'assets/shop-admin.js', PCIO_VIS_PRODUCTS_FILE ), [], PCIO_VIS_PRODUCTS_VERSION . '.2', true );
+        wp_enqueue_script( 'pcio-mep-admin', plugins_url( 'assets/shop-admin.js', PCIO_VIS_PRODUCTS_FILE ), [ 'pcio-vis-modal-guard' ], PCIO_VIS_PRODUCTS_VERSION . '.4', true );
         wp_add_inline_script(
             'pcio-mep-admin',
             'window.PCIO_VIS_Products_ADMIN = ' . wp_json_encode( [

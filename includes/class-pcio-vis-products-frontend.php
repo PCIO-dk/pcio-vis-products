@@ -66,7 +66,7 @@ class PCIO_VIS_Products_Frontend {
 
     private function enqueue_shop_assets( string $group ): void {
         wp_enqueue_style( 'pcio-mep-shop', plugins_url( 'assets/shop.css', PCIO_VIS_PRODUCTS_FILE ), [], PCIO_VIS_PRODUCTS_VERSION );
-        wp_enqueue_script( 'pcio-mep-shop', plugins_url( 'assets/shop.js', PCIO_VIS_PRODUCTS_FILE ), [], PCIO_VIS_PRODUCTS_VERSION, true );
+        wp_enqueue_script( 'pcio-mep-shop', plugins_url( 'assets/shop.js', PCIO_VIS_PRODUCTS_FILE ), [ 'pcio-vis-modal-guard' ], PCIO_VIS_PRODUCTS_VERSION . '.1', true );
 
         wp_add_inline_script(
             'pcio-mep-shop',
@@ -171,7 +171,7 @@ class PCIO_VIS_Products_Frontend {
         $product = PCIO_VIS_Products_DB::get_product_by_name( (string) $sub['product_name'] );
 
         wp_enqueue_style( 'pcio-mep-shop', plugins_url( 'assets/shop.css', PCIO_VIS_PRODUCTS_FILE ), [], PCIO_VIS_PRODUCTS_VERSION );
-        wp_enqueue_script( 'pcio-mep-shop', plugins_url( 'assets/shop.js', PCIO_VIS_PRODUCTS_FILE ), [], PCIO_VIS_PRODUCTS_VERSION, true );
+        wp_enqueue_script( 'pcio-mep-shop', plugins_url( 'assets/shop.js', PCIO_VIS_PRODUCTS_FILE ), [ 'pcio-vis-modal-guard' ], PCIO_VIS_PRODUCTS_VERSION . '.1', true );
         wp_add_inline_script(
             'pcio-mep-shop',
             'window.PCIO_VIS_Products_RENEW = ' . wp_json_encode( [

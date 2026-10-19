@@ -44,6 +44,247 @@ class PCIO_VIS_Products_DB {
         'cancelled',        // abandoned / failed
     ];
 
+    /**
+     * Register product tables with the core change-history service.
+     *
+     * @param array<string,array> $tables Existing table definitions.
+     * @return array<string,array>
+     */
+    public static function register_history_tables( array $tables ): array {
+        $ignore = [ 'created', 'updated', 'created_at', 'updated_at' ];
+
+        $tables['mep_products'] = [
+            'table'     => self::TABLE_PRODUCTS,
+            'label'     => __( 'Product', 'pcio-vis-products' ),
+            'title_col' => 'product_name',
+            'weight'    => 6,
+            'ignore'    => $ignore,
+            'large'     => [ 'description' ],
+            'fields'    => [
+                'group_name'          => __( 'Group', 'pcio-vis-products' ),
+                'product_name'        => __( 'Product name', 'pcio-vis-products' ),
+                'image_id'            => __( 'Image', 'pcio-vis-products' ),
+                'title'               => __( 'Title', 'pcio-vis-products' ),
+                'description'         => __( 'Description', 'pcio-vis-products' ),
+                'price_cents'         => __( 'Price (cents)', 'pcio-vis-products' ),
+                'currency'            => __( 'Currency', 'pcio-vis-products' ),
+                'is_subscription'     => __( 'Subscription', 'pcio-vis-products' ),
+                'is_membership'       => __( 'Membership', 'pcio-vis-products' ),
+                'subscription_period' => __( 'Subscription period', 'pcio-vis-products' ),
+                'sort'                => __( 'Sort order', 'pcio-vis-products' ),
+                'active'              => __( 'Active', 'pcio-vis-products' ),
+            ],
+        ];
+
+        $tables['mep_delivery_methods'] = [
+            'table'     => PCIO_VIS_Products_Delivery_DB::TABLE,
+            'label'     => __( 'Delivery method', 'pcio-vis-products' ),
+            'title_col' => 'name',
+            'weight'    => 4,
+            'ignore'    => $ignore,
+            'fields'    => [
+                'name'        => __( 'Name', 'pcio-vis-products' ),
+                'description' => __( 'Description', 'pcio-vis-products' ),
+                'price_cents' => __( 'Price (cents)', 'pcio-vis-products' ),
+                'sort'        => __( 'Sort order', 'pcio-vis-products' ),
+                'active'      => __( 'Active', 'pcio-vis-products' ),
+            ],
+        ];
+
+        $tables['mep_customers'] = [
+            'table'     => self::TABLE_CUSTOMERS,
+            'label'     => __( 'Shop customer', 'pcio-vis-products' ),
+            'title_col' => 'email',
+            'undoable'  => false,
+            'weight'    => 2,
+            'ignore'    => $ignore,
+            'fields'    => [
+                'email' => __( 'Email', 'pcio-vis-products' ),
+                'name'  => __( 'Name', 'pcio-vis-products' ),
+            ],
+            'links'     => static function ( array $row ): array {
+                return self::member_link_for_email( (string) ( $row['email'] ?? '' ) );
+            },
+        ];
+
+        $tables['mep_orders'] = [
+            'table'     => self::TABLE_ORDERS,
+            'label'     => __( 'Shop order', 'pcio-vis-products' ),
+            'title_col' => 'order_no',
+            'undoable'  => false,
+            'weight'    => 6,
+            'ignore'    => $ignore,
+            'large'     => [ 'summary' ],
+            'fields'    => [
+                'order_no'              => __( 'Order number', 'pcio-vis-products' ),
+                'customer_id'           => __( 'Customer', 'pcio-vis-products' ),
+                'email'                 => __( 'Email', 'pcio-vis-products' ),
+                'status'                => __( 'Status', 'pcio-vis-products' ),
+                'summary'               => __( 'Summary', 'pcio-vis-products' ),
+                'amount_cents'          => __( 'Amount (cents)', 'pcio-vis-products' ),
+                'refunded_cents'        => __( 'Refunded (cents)', 'pcio-vis-products' ),
+                'currency'              => __( 'Currency', 'pcio-vis-products' ),
+                'kind'                  => __( 'Kind', 'pcio-vis-products' ),
+                'subscription_id'       => __( 'Subscription', 'pcio-vis-products' ),
+                'delivery_method_id'    => __( 'Delivery method', 'pcio-vis-products' ),
+                'delivery_method_name'  => __( 'Delivery method name', 'pcio-vis-products' ),
+                'delivery_status'       => __( 'Delivery status', 'pcio-vis-products' ),
+                'stripe_session_id'     => __( 'Stripe session', 'pcio-vis-products' ),
+                'stripe_payment_intent' => __( 'Stripe payment intent', 'pcio-vis-products' ),
+                'paid_at'               => __( 'Paid at', 'pcio-vis-products' ),
+                'refunded_at'           => __( 'Refunded at', 'pcio-vis-products' ),
+            ],
+            'links'     => static function ( array $row ): array {
+                return self::member_link_for_product_row( $row );
+            },
+        ];
+
+        $tables['mep_order_items'] = [
+            'table'    => self::TABLE_ORDER_ITEMS,
+            'label'    => __( 'Shop order item', 'pcio-vis-products' ),
+            'title'    => static function ( array $row ): string {
+                return sprintf(
+                    /* translators: 1: order ID, 2: product name. */
+                    __( 'Order #%1$d %2$s', 'pcio-vis-products' ),
+                    (int) ( $row['order_id'] ?? 0 ),
+                    (string) ( $row['product_name'] ?? '' )
+                );
+            },
+            'undoable' => false,
+            'weight'   => 2,
+            'ignore'   => $ignore,
+            'fields'   => [
+                'order_id'         => __( 'Order', 'pcio-vis-products' ),
+                'product_id'       => __( 'Product', 'pcio-vis-products' ),
+                'product_name'     => __( 'Product name', 'pcio-vis-products' ),
+                'qty'              => __( 'Quantity', 'pcio-vis-products' ),
+                'unit_price_cents' => __( 'Unit price (cents)', 'pcio-vis-products' ),
+            ],
+            'links'    => static function ( array $row ): array {
+                return self::member_link_for_order( (int) ( $row['order_id'] ?? 0 ) );
+            },
+        ];
+
+        $tables['mep_subscriptions'] = [
+            'table'     => self::TABLE_SUBSCRIPTIONS,
+            'label'     => __( 'Shop subscription', 'pcio-vis-products' ),
+            'title_col' => 'license_token',
+            'undoable'  => false,
+            'weight'    => 5,
+            'ignore'    => $ignore,
+            'fields'    => [
+                'license_token'    => __( 'License token', 'pcio-vis-products' ),
+                'verify_token'     => __( 'Verify token', 'pcio-vis-products' ),
+                'product_name'     => __( 'Product name', 'pcio-vis-products' ),
+                'customer_name'    => __( 'Customer name', 'pcio-vis-products' ),
+                'customer_email'   => __( 'Customer email', 'pcio-vis-products' ),
+                'expire_date'      => __( 'Expiry date', 'pcio-vis-products' ),
+                'member_id'        => __( 'Member', 'pcio-vis-products' ),
+                'member_number'    => __( 'Member number', 'pcio-vis-products' ),
+                'order_id'         => __( 'Order', 'pcio-vis-products' ),
+                'status'           => __( 'Status', 'pcio-vis-products' ),
+                'reminder_sent_at' => __( 'Reminder sent at', 'pcio-vis-products' ),
+            ],
+            'links'     => static function ( array $row ): array {
+                return self::member_link_for_product_row( $row );
+            },
+        ];
+
+        return $tables;
+    }
+
+    /**
+     * Build a member-history link from member_id, member_number, order, or email.
+     *
+     * @return array{member_id?:int}
+     */
+    private static function member_link_for_product_row( array $row ): array {
+        $member_id = (int) ( $row['member_id'] ?? 0 );
+        if ( $member_id > 0 ) {
+            return [ 'member_id' => $member_id ];
+        }
+
+        $member_number = (int) ( $row['member_number'] ?? 0 );
+        if ( $member_number > 0 && class_exists( 'PCIO_VIS_DB' ) ) {
+            $ids = PCIO_VIS_DB::get_member_ids_by_member_number( $member_number );
+            if ( $ids ) {
+                return [ 'member_id' => min( array_map( 'intval', $ids ) ) ];
+            }
+        }
+
+        $subscription_id = (int) ( $row['subscription_id'] ?? 0 );
+        if ( $subscription_id > 0 ) {
+            $link = self::member_link_for_subscription( $subscription_id );
+            if ( $link ) {
+                return $link;
+            }
+        }
+
+        $order_id = (int) ( $row['order_id'] ?? 0 );
+        if ( $order_id > 0 ) {
+            $link = self::member_link_for_order( $order_id );
+            if ( $link ) {
+                return $link;
+            }
+        }
+
+        return self::member_link_for_email( (string) ( $row['email'] ?? $row['customer_email'] ?? '' ) );
+    }
+
+    /**
+     * Resolve a shop order to the related member, when one exists.
+     *
+     * @return array{member_id?:int}
+     */
+    private static function member_link_for_order( int $order_id ): array {
+        global $wpdb;
+        if ( $order_id < 1 ) {
+            return [];
+        }
+        $row = $wpdb->get_row(
+            $wpdb->prepare( 'SELECT email, subscription_id FROM %i WHERE id = %d', self::t_orders(), $order_id ),
+            ARRAY_A
+        );
+        if ( ! $row ) {
+            return [];
+        }
+        return self::member_link_for_product_row( $row );
+    }
+
+    /**
+     * Resolve a subscription id to the related member, when one exists.
+     *
+     * @return array{member_id?:int}
+     */
+    private static function member_link_for_subscription( int $subscription_id ): array {
+        global $wpdb;
+        if ( $subscription_id < 1 ) {
+            return [];
+        }
+        $row = $wpdb->get_row(
+            $wpdb->prepare( 'SELECT member_id, member_number, customer_email FROM %i WHERE id = %d', self::t_subscriptions(), $subscription_id ),
+            ARRAY_A
+        );
+        return $row ? self::member_link_for_product_row( $row ) : [];
+    }
+
+    /**
+     * Resolve a customer email to a member, when one exists.
+     *
+     * @return array{member_id?:int}
+     */
+    private static function member_link_for_email( string $email ): array {
+        global $wpdb;
+        $email = sanitize_email( $email );
+        if ( '' === $email ) {
+            return [];
+        }
+        $member_id = (int) $wpdb->get_var(
+            $wpdb->prepare( 'SELECT id FROM %i WHERE email = %s ORDER BY id ASC LIMIT 1', $wpdb->prefix . 'me_members', $email )
+        );
+        return $member_id > 0 ? [ 'member_id' => $member_id ] : [];
+    }
+
     // ── Table-name helpers ────────────────────────────────────────
 
     public static function t_products(): string {
@@ -312,7 +553,7 @@ class PCIO_VIS_Products_DB {
         }
         $next_sort = (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COALESCE(MAX(sort),0)+1 FROM %i', self::t_products() ) );
         $clean['sort'] = $next_sort;
-        $wpdb->insert( self::t_products(), $clean, self::product_formats( $clean ) );
+        PCIO_VIS_History::insert( 'mep_products', $clean, self::product_formats( $clean ) );
         return (int) $wpdb->insert_id;
     }
 
@@ -332,12 +573,12 @@ class PCIO_VIS_Products_DB {
             }
         }
         $clean['updated'] = current_time( 'mysql' );
-        return false !== $wpdb->update( self::t_products(), $clean, [ 'id' => $id ], self::product_formats( $clean ), [ '%d' ] );
+        return false !== PCIO_VIS_History::update( 'mep_products', $clean, [ 'id' => $id ], self::product_formats( $clean ), [ '%d' ] );
     }
 
     public static function delete_product( int $id ): bool {
         global $wpdb;
-        return false !== $wpdb->delete( self::t_products(), [ 'id' => $id ], [ '%d' ] );
+        return false !== PCIO_VIS_History::delete( 'mep_products', [ 'id' => $id ], [ '%d' ] );
     }
 
     // ── Subscriptions ─────────────────────────────────────────────
@@ -430,8 +671,8 @@ class PCIO_VIS_Products_DB {
         $expire = ! empty( $data['expire_date'] )
             ? sanitize_text_field( $data['expire_date'] )
             : gmdate( 'Y-m-d', strtotime( '+1 year' ) );
-        $wpdb->insert(
-            self::t_subscriptions(),
+        PCIO_VIS_History::insert(
+            'mep_subscriptions',
             [
                 'license_token'  => self::unique_token( self::t_subscriptions(), 'license_token' ),
                 'verify_token'   => self::generate_token(),
@@ -450,15 +691,13 @@ class PCIO_VIS_Products_DB {
     }
 
     public static function update_subscription( int $id, array $data, array $formats ): bool {
-        global $wpdb;
         $data['updated'] = current_time( 'mysql' );
         $formats[]       = '%s';
-        return false !== $wpdb->update( self::t_subscriptions(), $data, [ 'id' => $id ], $formats, [ '%d' ] );
+        return false !== PCIO_VIS_History::update( 'mep_subscriptions', $data, [ 'id' => $id ], $formats, [ '%d' ] );
     }
 
     public static function delete_subscription( int $id ): bool {
-        global $wpdb;
-        return false !== $wpdb->delete( self::t_subscriptions(), [ 'id' => $id ], [ '%d' ] );
+        return false !== PCIO_VIS_History::delete( 'mep_subscriptions', [ 'id' => $id ], [ '%d' ] );
     }
 
     /**
@@ -667,12 +906,12 @@ class PCIO_VIS_Products_DB {
         );
         if ( $id ) {
             if ( $name !== '' ) {
-                $wpdb->update( self::t_customers(), [ 'name' => sanitize_text_field( $name ) ], [ 'id' => $id ] );
+                PCIO_VIS_History::update( 'mep_customers', [ 'name' => sanitize_text_field( $name ) ], [ 'id' => $id ] );
             }
             return $id;
         }
-        $wpdb->insert(
-            self::t_customers(),
+        PCIO_VIS_History::insert(
+            'mep_customers',
             [ 'email' => $email, 'name' => sanitize_text_field( $name ) ],
             [ '%s', '%s' ]
         );
@@ -683,8 +922,8 @@ class PCIO_VIS_Products_DB {
 
     public static function create_order( array $data ): int {
         global $wpdb;
-        $wpdb->insert(
-            self::t_orders(),
+        PCIO_VIS_History::insert(
+            'mep_orders',
             [
                 'order_no'     => self::generate_order_no(),
                 'token'        => self::generate_token(),
@@ -730,8 +969,7 @@ class PCIO_VIS_Products_DB {
     }
 
     public static function update_order( int $id, array $data, array $formats ): bool {
-        global $wpdb;
-        return false !== $wpdb->update( self::t_orders(), $data, [ 'id' => $id ], $formats, [ '%d' ] );
+        return false !== PCIO_VIS_History::update( 'mep_orders', $data, [ 'id' => $id ], $formats, [ '%d' ] );
     }
 
     /**
@@ -798,8 +1036,8 @@ class PCIO_VIS_Products_DB {
 
     public static function add_order_item( int $order_id, int $product_id, string $product_name, int $qty, int $unit_price_cents ): void {
         global $wpdb;
-        $wpdb->insert(
-            self::t_order_items(),
+        PCIO_VIS_History::insert(
+            'mep_order_items',
             [
                 'order_id'         => $order_id,
                 'product_id'       => $product_id,

@@ -575,9 +575,13 @@
 		document.getElementById( 'f-sub' ).addEventListener( 'change', syncSubPeriod );
 		syncSubPeriod();
 
-		function close() { if ( overlay.parentNode ) { document.body.removeChild( overlay ); } }
+		function close( saved ) {
+			if ( ! PCIOVisModal.close( overlay, saved ) ) { return; }
+			if ( overlay.parentNode ) { document.body.removeChild( overlay ); }
+		}
+		PCIOVisModal.open( overlay, close, function () { return imgState.id; } );
+		document.getElementById( 'f-group' ).focus();
 		Array.prototype.forEach.call( overlay.querySelectorAll( '[data-close]' ), function ( b ) { b.addEventListener( 'click', close ); } );
-		overlay.addEventListener( 'click', function ( e ) { if ( e.target === overlay ) { close(); } } );
 
 		document.getElementById( 'mep-img-pick' ).addEventListener( 'click', function () {
 			if ( ! window.wp || ! window.wp.media ) { return; }
@@ -613,7 +617,7 @@
 			var saveBtn = document.getElementById( 'mep-save' );
 			saveBtn.disabled = true;
 			var p = id ? api( '/products/' + id, 'PUT', payload ) : api( '/products', 'POST', payload );
-			p.then( function () { close(); load(); } )
+			p.then( function () { close( true ); load(); } )
 				.catch( function ( e ) { err.textContent = e.message || ( T.saveFailed || 'Save failed.' ); saveBtn.disabled = false; } );
 		} );
 	}
@@ -698,9 +702,13 @@
 				'</div>';
 			document.body.appendChild( overlay );
 
-			function close() { if ( overlay.parentNode ) { document.body.removeChild( overlay ); } }
+			function close( saved ) {
+				if ( ! PCIOVisModal.close( overlay, saved ) ) { return; }
+				if ( overlay.parentNode ) { document.body.removeChild( overlay ); }
+			}
+			PCIOVisModal.open( overlay, close );
+			document.getElementById( 'fs-product' ).focus();
 			Array.prototype.forEach.call( overlay.querySelectorAll( '[data-close]' ), function ( b ) { b.addEventListener( 'click', close ); } );
-			overlay.addEventListener( 'click', function ( e ) { if ( e.target === overlay ) { close(); } } );
 
 			document.getElementById( 'mep-sub-save' ).addEventListener( 'click', function () {
 				var err = document.getElementById( 'mep-sub-error' );
@@ -716,7 +724,7 @@
 				var saveBtn = document.getElementById( 'mep-sub-save' );
 				saveBtn.disabled = true;
 				var p = id ? api( '/subscriptions/' + id, 'PUT', payload ) : api( '/subscriptions', 'POST', payload );
-				p.then( function () { close(); load(); } )
+				p.then( function () { close( true ); load(); } )
 					.catch( function ( e ) { err.textContent = e.message || ( T.saveFailed || 'Save failed.' ); saveBtn.disabled = false; } );
 			} );
 		} );
@@ -781,11 +789,15 @@
 
 		document.body.appendChild( overlay );
 
-		function close() { if ( overlay.parentNode ) { document.body.removeChild( overlay ); } }
+		function close( saved ) {
+			if ( ! PCIOVisModal.close( overlay, saved ) ) { return; }
+			if ( overlay.parentNode ) { document.body.removeChild( overlay ); }
+		}
+		PCIOVisModal.open( overlay, close );
+		document.getElementById( 'f-dm-name' ).focus();
 		Array.prototype.forEach.call( overlay.querySelectorAll( '[data-close]' ), function ( b ) {
 			b.addEventListener( 'click', close );
 		} );
-		overlay.addEventListener( 'click', function ( e ) { if ( e.target === overlay ) { close(); } } );
 
 		document.getElementById( 'mep-save' ).addEventListener( 'click', function () {
 			var err  = document.getElementById( 'mep-form-error' );
@@ -804,7 +816,7 @@
 			var p = id
 				? api( '/delivery-methods/' + id, 'PUT',  payload )
 				: api( '/delivery-methods',        'POST', payload );
-			p.then( function () { close(); load(); } )
+			p.then( function () { close( true ); load(); } )
 				.catch( function ( e ) { err.textContent = e.message || ( T.saveFailed || 'Save failed.' ); saveBtn.disabled = false; } );
 		} );
 	}
@@ -812,6 +824,7 @@
 	// ── Tabs ──────────────────────────────────────────────────────
 	function activate( tab ) {
 		activeTab = tab;
+		if ( window.location.hash !== '#' + tab ) window.history.replaceState( null, '', '#' + tab );
 		var ds = defaultSort( tab );
 		sortCol = ds.col;
 		sortDir = ds.dir;
@@ -833,8 +846,13 @@
 		} );
 		// Land on the first tab the user actually has (finance-only users have
 		// no Products tab, so this becomes Subscriptions).
-		var first = tabs.length ? tabs[0].getAttribute( 'data-tab' ) : 'subscriptions';
-		activate( first );
+		var selectHashTab = function () {
+			var requested = window.location.hash.slice( 1 );
+			var target = Array.prototype.find.call( tabs, function ( tab ) { return tab.getAttribute( 'data-tab' ) === requested; } );
+			activate( target ? requested : ( tabs.length ? tabs[0].getAttribute( 'data-tab' ) : 'subscriptions' ) );
+		};
+		selectHashTab();
+		window.addEventListener( 'hashchange', selectHashTab );
 	}
 
 	if ( document.readyState === 'loading' ) {

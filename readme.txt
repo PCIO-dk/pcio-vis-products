@@ -8,7 +8,7 @@ Requires at least: 6.2
 Tested up to:      7.1
 Requires PHP:      8.1
 Requires Plugins:  pcio-vis-member-event, pcio-vis-tickets
-Stable tag:        1.3.0
+Stable tag:        1.4.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ Buyer name and email entered at checkout are stored on this site to issue and em
 
 == Upgrade Notice ==
 
+= 1.4.0 =
+Requires PCIO VIS Member Event 1.6 or later.
+
 = 1.3.0 =
 Requires PCIO VIS Member Event 1.5 or later. On upgrade, the subscription table's `member_subscription_number` column is renamed to `member_number` automatically — existing membership numbers are preserved and no manual SQL is needed. Open any wp-admin page so the schema upgrade runs.
 
@@ -72,6 +75,9 @@ Requires PCIO VIS Member Event 1.5 or later. On upgrade, the subscription table'
 Requires PCIO VIS Member Event 1.4 or later, which adds the member "Membership #" field that subscriptions are linked to. Update the core plugin first, then open any wp-admin page so its schema upgrade runs.
 
 == Changelog ==
+
+= 1.4.0 =
+* Added: Change history with undo — a new Vis → History page lists changes with filters and an Undo button, guarded by the new `vis_undo_changes` capability.
 
 = 1.3.0 =
 * Added: **Single purchase email per order** — a confirmed order now sends exactly one email. Fulfilment (creating subscriptions and linking the membership) runs first, the receipt is sent afterwards, and the result page on `/shop/accepted` shows the same body as the email, so what the customer reads on screen matches what arrives in their inbox.

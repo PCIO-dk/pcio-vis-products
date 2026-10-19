@@ -106,7 +106,7 @@ class PCIO_VIS_Products_Delivery_DB {
 			$wpdb->prepare( 'SELECT COALESCE(MAX(sort),0)+1 FROM %i', self::t() )
 		);
 		$clean['sort'] = $max_sort;
-		$wpdb->insert( self::t(), $clean, self::formats( $clean ) );
+		PCIO_VIS_History::insert( 'mep_delivery_methods', $clean, self::formats( $clean ) );
 		return (int) $wpdb->insert_id;
 	}
 
@@ -116,12 +116,11 @@ class PCIO_VIS_Products_Delivery_DB {
 		if ( ! $clean ) {
 			return false;
 		}
-		return false !== $wpdb->update( self::t(), $clean, [ 'id' => $id ], self::formats( $clean ), [ '%d' ] );
+		return false !== PCIO_VIS_History::update( 'mep_delivery_methods', $clean, [ 'id' => $id ], self::formats( $clean ), [ '%d' ] );
 	}
 
 	public static function delete( int $id ): bool {
-		global $wpdb;
-		return false !== $wpdb->delete( self::t(), [ 'id' => $id ], [ '%d' ] );
+		return false !== PCIO_VIS_History::delete( 'mep_delivery_methods', [ 'id' => $id ], [ '%d' ] );
 	}
 
 	// ── Delivery orders ───────────────────────────────────────────
@@ -194,8 +193,8 @@ class PCIO_VIS_Products_Delivery_DB {
 		if ( ! in_array( $status, self::DELIVERY_STATUSES, true ) ) {
 			return false;
 		}
-		return false !== $wpdb->update(
-			PCIO_VIS_Products_DB::t_orders(),
+		return false !== PCIO_VIS_History::update(
+			'mep_orders',
 			[ 'delivery_status' => $status ],
 			[ 'id' => $order_id ],
 			[ '%s' ],

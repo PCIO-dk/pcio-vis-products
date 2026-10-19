@@ -170,6 +170,7 @@
 				cart.forEach( function ( item, idx ) {
 					total += item.price_cents * item.qty;
 					var q = el( 'input', { type: 'number', min: '1', value: String( item.qty ), class: 'mep-qty mep-qty-sm' } );
+					q.setAttribute( 'data-pcio-modal-ignore', '' );
 					q.addEventListener( 'input', function () {
 						item.qty = Math.max( 1, parseInt( q.value, 10 ) || 1 );
 						updateCartButton();
@@ -201,7 +202,10 @@
 					email: emailInput.value.trim(),
 					items: cart.map( function ( i ) { return { product_id: i.id, qty: i.qty }; } )
 				} ).then( function ( res ) {
-					if ( res.redirect ) { window.location.href = res.redirect; }
+					if ( res.redirect ) {
+						PCIOVisModal.close( overlay, true );
+						window.location.href = res.redirect;
+					}
 				} ).catch( function ( e ) {
 					err.textContent = e.message || ( T.genericErr || 'Error' );
 					err.hidden = false;
@@ -223,9 +227,13 @@
 				el( 'div', { class: 'mep-modal-foot' }, [ payBtn ] )
 			] );
 			overlay = el( 'div', { class: 'mep-overlay' }, [ modal ] );
-			close = function () { if ( overlay.parentNode ) { document.body.removeChild( overlay ); } };
-			overlay.addEventListener( 'click', function ( e ) { if ( e.target === overlay ) { close(); } } );
+			close = function () {
+				if ( ! PCIOVisModal.close( overlay ) ) { return; }
+				if ( overlay.parentNode ) { document.body.removeChild( overlay ); }
+			};
 			document.body.appendChild( overlay );
+			PCIOVisModal.open( overlay, close );
+			nameInput.focus();
 		}
 
 		load();

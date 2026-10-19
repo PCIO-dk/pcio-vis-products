@@ -45,7 +45,7 @@ class PCIO_VIS_Products_Delivery_Admin {
 	}
 
 	private function enqueue_assets(): void {
-		wp_enqueue_style( 'pcio-me-app', plugins_url( 'assets/members.css', PCIO_VIS_PLUGIN_FILE ), [], '1.0.9' );
+		wp_enqueue_style( 'pcio-me-app', plugins_url( 'assets/members.css', PCIO_VIS_PLUGIN_FILE ), [], '1.4.0' );
 		wp_enqueue_style(
 			'pcio-mep-delivery-admin',
 			plugins_url( 'assets/delivery-admin.css', PCIO_VIS_PRODUCTS_FILE ),

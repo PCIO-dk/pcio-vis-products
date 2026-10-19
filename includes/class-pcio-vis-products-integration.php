@@ -27,7 +27,7 @@ class PCIO_VIS_Products_Integration {
         add_action( 'pcio_me_sync_caps',         [ $this, 'grant_native_role_caps' ] );
 
         // Landing page card + navigation link.
-        add_action( 'pcio_me_home_cards', [ $this, 'render_home_card' ] );
+        add_action( 'pcio_me_home_cards', [ $this, 'render_home_card' ], 20 );
         add_filter( 'pcio_me_nav_items',  [ $this, 'add_nav_item' ], 10, 2 );
 
         // Subscription status on the member list.
@@ -39,6 +39,7 @@ class PCIO_VIS_Products_Integration {
 
         // Finance section: read-only "Shop Orders" list.
         add_filter( 'pcio_me_finance_lists', [ $this, 'register_finance_list' ] );
+        add_filter( 'pcio_me_finance_tabs', [ $this, 'register_finance_tabs' ] );
 
         // Statistics dashboard: canonical "Active memberships" count.
         add_filter( 'pcio_me_active_subscription_count', [ $this, 'active_subscription_count' ] );
@@ -103,7 +104,7 @@ class PCIO_VIS_Products_Integration {
     // ── Landing page + navigation ─────────────────────────────────
 
     public function render_home_card(): void {
-        if ( current_user_can( 'vis_shop_manage' ) ) {
+        if ( current_user_can( 'vis_shop_manage' ) || current_user_can( 'vis_manage_finance' ) ) {
             $url = home_url( 'vis/shop' );
             ?>
         <a class="me-home-card" href="<?php echo esc_url( $url ); ?>">
@@ -133,36 +134,6 @@ class PCIO_VIS_Products_Integration {
             <?php
         }
 
-        if ( current_user_can( 'vis_shop_delivery' ) ) {
-            $url = home_url( 'vis/delivery' );
-            ?>
-        <a class="me-home-card" href="<?php echo esc_url( $url ); ?>">
-            <div class="me-home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="1" y="3" width="15" height="13" rx="2"/>
-                    <path d="M16 8h4l3 5v4h-7V8z"/>
-                    <circle cx="5.5" cy="18.5" r="2.5"/>
-                    <circle cx="18.5" cy="18.5" r="2.5"/>
-                </svg>
-            </div>
-            <div class="me-home-card-body">
-                <h2 class="me-home-card-title">
-                    <?php esc_html_e( 'Deliveries', 'pcio-vis-products' ); ?>
-                </h2>
-                <p class="me-home-card-desc">
-                    <?php esc_html_e( 'Track and confirm product deliveries to members.', 'pcio-vis-products' ); ?>
-                </p>
-            </div>
-            <div class="me-home-card-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </div>
-        </a>
-            <?php
-        }
     }
 
     /**
@@ -171,13 +142,27 @@ class PCIO_VIS_Products_Integration {
      * @return array
      */
     public function add_nav_item( array $items, string $active ): array {
-        if ( current_user_can( 'vis_shop_manage' ) ) {
-            $items['shop'] = [ 'label' => __( 'Shop', 'pcio-vis-products' ), 'url' => home_url( 'vis/shop' ) ];
-        }
-        if ( current_user_can( 'vis_shop_delivery' ) ) {
-            $items['delivery'] = [ 'label' => __( 'Deliveries', 'pcio-vis-products' ), 'url' => home_url( 'vis/delivery' ) ];
+        $can_manage = current_user_can( 'vis_shop_manage' );
+        if ( $can_manage || current_user_can( 'vis_manage_finance' ) ) {
+            $children = [];
+            if ( $can_manage ) {
+                $children['products'] = [ 'label' => __( 'Products', 'pcio-vis-products' ), 'url' => home_url( 'vis/shop#products' ) ];
+            }
+            $children['subscriptions'] = [ 'label' => __( 'Subscriptions', 'pcio-vis-products' ), 'url' => home_url( 'vis/shop#subscriptions' ) ];
+            if ( $can_manage ) {
+                $children['delivery-methods'] = [ 'label' => __( 'Delivery Methods', 'pcio-vis-products' ), 'url' => home_url( 'vis/shop#delivery-methods' ) ];
+            }
+            $items['shop'] = [ 'label' => __( 'Shop', 'pcio-vis-products' ), 'url' => home_url( 'vis/shop' ), 'children' => $children ];
         }
         return $items;
+    }
+
+    /** Add the existing delivery workflow to the Finance section. */
+    public function register_finance_tabs( array $tabs ): array {
+        if ( current_user_can( 'vis_shop_delivery' ) ) {
+            $tabs['delivery'] = [ 'label' => __( 'Deliveries', 'pcio-vis-products' ), 'url' => home_url( 'vis/delivery' ) ];
+        }
+        return $tabs;
     }
 
     // ── Member subscription status ────────────────────────────────

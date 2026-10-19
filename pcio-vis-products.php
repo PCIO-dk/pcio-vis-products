@@ -3,7 +3,7 @@
 Plugin Name:  PCIO VIS Products
 Plugin URI:   https://www.pcio.dk/
 Description:  Adds a digital shop to PCIO VIS Member Event: products and license-key subscriptions, a public [pcio_me_shop] storefront with Stripe checkout, a Shop Orders list in Finance, automatic membership subscriptions on the member list, and a renewal/expiry reminder cron. Reuses the Tickets plugin's Stripe configuration.
-Version:      1.3.0
+Version:      1.4.0
 Author:       PCIO
 Author URI:   https://www.pcio.dk
 Requires at least: 6.2
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'PCIO_VIS_PRODUCTS_FILE', __FILE__ );
 define( 'PCIO_VIS_PRODUCTS_DIR',  plugin_dir_path( __FILE__ ) );
 define( 'PCIO_VIS_PRODUCTS_URL',  plugin_dir_url( __FILE__ ) );
-define( 'PCIO_VIS_PRODUCTS_VERSION', '1.3.0' );
+define( 'PCIO_VIS_PRODUCTS_VERSION', '1.4.0' );
 
 require_once PCIO_VIS_PRODUCTS_DIR . 'includes/class-pcio-vis-products-db.php';
 require_once PCIO_VIS_PRODUCTS_DIR . 'includes/class-pcio-vis-products-delivery-db.php';
@@ -59,6 +59,7 @@ class PCIO_VIS_Products_Plugin {
         add_action( 'init',          [ __CLASS__, 'maybe_flush_rewrites' ], 99 );
         add_action( 'init',          [ __CLASS__, 'maybe_sync_rewrites' ], 99 );
         add_action( 'rest_api_init', [ __CLASS__, 'register_rest'   ] );
+        add_filter( 'pcio_me_history_tables', [ 'PCIO_VIS_Products_DB', 'register_history_tables' ] );
 
         ( new PCIO_VIS_Products_Admin() )->register();
         ( new PCIO_VIS_Products_Delivery_Admin() )->register();
